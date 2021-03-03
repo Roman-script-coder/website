@@ -1,4 +1,3 @@
-<script type='text/javascript'>
 		const numberOfAttempts = document.querySelector('.numberOfAttempts');
 		const buttonOfSign = document.querySelectorAll('.buttonOfSign');
 		check(true);
@@ -77,4 +76,4 @@
 				buttonOfSign[i].disabled=value;
 			}
 		}
-	</script>
+
