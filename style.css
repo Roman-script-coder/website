@@ -1,17 +1,17 @@
-.rule {
+rule {
 	height: 200px;
 	width: 50%;
 	padding-top: 25px;
 	background: #b8b8e9;
 	text-align: center;
 }
-.playerOne {
+playerOne {
 	width: 25%;
 	background: #b8b8e9;
 	text-align: center;
 	float: left;
 }
-.playerTwo {
+playerTwo {
 	width: 25%;
 	background: #b8b8e9;
 	text-align: center;
