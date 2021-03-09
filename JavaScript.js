@@ -33,9 +33,6 @@
 		function enterSign(e) {
 			const valuePlayerYour = document.createElement('div');
 			const valuePlayerOpponent = document.createElement('div');
-			const valuePlayerWin = document.createElement('div');
-			const valuePlayerLose = document.createElement('div');
-			const valuePlayerDraw = document.createElement('div');
 			const randomSign = getRandomInt(0, 3);
 			const div = document.createElement('div');
 			result.innerText = '';
