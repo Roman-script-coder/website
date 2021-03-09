@@ -1,20 +1,70 @@
-.rule {
-	height: 200px;
-	width: 50%;
-	padding-top: 25px;
-	background: #b8b8e9;
-	text-align: center;
-}
-.playerOne {
-	width: 25%;
-	background: #b8b8e9;
-	text-align: center;
-	float: left;
-}
-.playerTwo {
-	width: 25%;
-	background: #b8b8e9;
-	text-align: center;
-	float: left;
-}
-
+		input {
+			padding: 0px 10px;
+  			border-radius: 45px;
+  			font-size: 15px;
+  			border: 0;
+  			outline: none;
+  			text-align: center;
+		}
+		button {
+			text-decoration: none;
+			display: inline-block;
+			padding: 10px 30px;
+			margin: 10px 20px;
+			position: relative;
+			overflow: hidden;
+			border: 2px solid #fe6637;
+			border-radius: 8px;
+			font-family: 'Montserrat', sans-serif;
+			color: #fe6637;
+			transition: .2s ease-in-out;
+			outline: none;
+			background: #fff;
+			color: #000000;
+		}
+		button:disabled {
+			background: #fe6637;
+			color: #000000;
+		}
+		button:hover {
+			  background: #fe6637;
+			  color: #fff;
+		}
+		.pole {
+			width: 50%;
+	    	min-width: 800px;
+	    	max-width: 1920px;
+			background: #97deff;
+			margin: 0 auto;
+			height: 860px;
+			text-align: center;
+		}
+		.rule {
+			padding: 20px 30px 20px 30px;
+			background: #b8b8e9;
+		}
+		.result {
+			width: 100%;
+			height: auto;
+			background: #9b3d8b;
+			font-size: 18px;
+		}
+		.playerWin {
+			background: #fff;
+			color: #000000;
+			font-size: 18px;
+		}
+		.playerLose {
+			background: #000000;
+			color: #fff;
+			font-size: 18px;
+		}
+		.playerDraw {
+			background: #5e7987;
+			color: #000000;
+			font-size: 18px;
+		}
+		.answer {
+			display: grid;
+			grid-template-columns: 50% 50%;
+		}
