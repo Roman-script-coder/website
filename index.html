@@ -2,25 +2,25 @@
 <head>
 	<title>Камень, ножницы, бумага</title>
 	<link rel='stylesheet' href='style.css'>
-	<script src='JavaScript.js'></script>
 </head>
 <body>
 	<div class='pole'>
 		<div class='rule'>
 			<h2>Для того чтобы сыграть:<br>
-			1. Напишите число попыток и нажмите Enter;<br>
+			1. Введите число попыток и нажмите Enter;<br>
 			2. Нажмите на 'камень', 'ножницы' или 'бумага'<br>
-			3. Испытайте удачу</h2></div><br>
+			3. Победа в игре дает одно очко, поражение дает одно очко противнику, в случае ничьи будет переигровка<br>
+			4. Испытайте удачу</h2></div><br>
 		<div> Введите количество попыток: <input class='numberOfTry' onKeyPress='if(event.keyCode == 13) enterNumber()'>  и нажимет 'Enter'</div><br>
-		<div>Число попыток <span class='numberOfAttempts'>___</span></div><br>
+		<div>Число игр <span class='numberOfAttempts'>___</span></div><br>
 		<button value ='Камень' class='buttonOfSign' onclick='enterSign(event)'>Камень</button>
 		<button value ='Ножницы' class='buttonOfSign' onclick='enterSign(event)'>Ножницы</button>
-		<button value ='Бумага' class='buttonOfSign' onclick='enterSign(event)'>Бумага</button>
-		<div class='answer'></div>
-		<div class='score'>
-			<span class='playerOne'></span>
-			<span class='playerTwo'></span>
+		<button value ='Бумага' class='buttonOfSign' onclick='enterSign(event)'>Бумага</button><br><br>
+		<div class='result'></div><br>
+		<div class='answer'>
+			<span>Вы выбрали:</span><span>Противник выбрал:</span>
 		</div>
 	</div>
+	<script src='JavaScript.js'></script>
 </body>
 </html>

@@ -2,15 +2,22 @@
 		const buttonOfSign = document.querySelectorAll('.buttonOfSign');
 		check(true);
 		function enterNumber() {
+			const pattern = /\D+/g;
 			const numberOfTry = document.querySelector('.numberOfTry');
-			if(Number.parseInt(numberOfTry.value)%2 != 0) {
-				numberOfAttempts.innerText = numberOfTry.value;
-				numberOfTry.value = '';
-				numberOfTry.disabled=true;
-				check(false);
+			if(numberOfTry.value.match(pattern)) {
+				console.log(numberOfTry.value.match(pattern));
+				alert('Введите число');
+					numberOfTry.value = '';
 			} else {
-				alert('Количество попыток должно быть не четным');
-				numberOfTry.value = '';
+				if(parseInt(numberOfTry.value)%2 != 0) {
+					numberOfAttempts.innerText = numberOfTry.value;
+					numberOfTry.value = '';
+					numberOfTry.disabled=true;
+					check(false);
+				} else {
+					alert('Количество попыток должно быть не четным');
+					numberOfTry.value = '';
+				}
 			}
 		}
 		const arrSign = [
@@ -20,15 +27,16 @@
 		];
 		const answer = document.querySelector('.answer');
 		const enter = document.querySelector('.enter');
-		const playerOne = document.querySelector('.playerOne');
-		const playerTwo = document.querySelector('.playerTwo');
-		let playerOneScore = 0;
-		let playerTwoScore = 0;
+		const result = document.querySelector('.result');
+		let playerWinScore = 0;
+		let playerLoseScore = 0;
 		function enterSign(e) {
-			const number = parseInt(numberOfAttempts.innerText)-1;
+			const valuePlayerYour = document.createElement('div');
+			const valuePlayerOpponent = document.createElement('div');
 			const randomSign = getRandomInt(0, 3);
 			const div = document.createElement('div');
-			answer.innerText = '';
+			result.innerText = '';
+			const number = parseInt(numberOfAttempts.innerText)-1;
 			const stone = e.target.value == 'Камень';
 			const scissors = e.target.value == 'Ножницы';
 			const paper = e.target.value == 'Бумага';
@@ -37,35 +45,45 @@
 			const vinPaper = paper && arrSign[randomSign] == arrSign[0];
 				if(vinStone || vinScissors || vinPaper) {
 					div.innerText = 'Вы выиграли';
-					answer.append(div);
-					playerOneScore++;
+					result.append(div);
+					playerWinScore++;
+					numberOfAttempts.innerText = number;
+					valuePlayerYour.classList.add('playerWin');
+					valuePlayerOpponent.classList.add('playerWin');
+					valuePlayerYour.innerText = e.target.value;
+					valuePlayerOpponent.innerText = arrSign[randomSign];
+					answer.append(valuePlayerYour);
+					answer.append(valuePlayerOpponent);
 				} else if(e.target.value == arrSign[randomSign]) {
 					div.innerText = 'Ничья';
-					answer.append(div);
+					result.append(div);
+					valuePlayerYour.classList.add('playerDraw');
+					valuePlayerOpponent.classList.add('playerDraw');
+					valuePlayerYour.innerText = e.target.value;
+					valuePlayerOpponent.innerText = arrSign[randomSign];
+					answer.append(valuePlayerYour);
+					answer.append(valuePlayerOpponent);
 				} else {
 					div.innerText = 'Вы проиграли';
-					answer.append(div);
-					playerTwoScore++;
+					result.append(div);
+					playerLoseScore++;
+					numberOfAttempts.innerText = number;
+					valuePlayerYour.classList.add('playerLose');
+					valuePlayerOpponent.classList.add('playerLose');
+					valuePlayerYour.innerText = e.target.value;
+					valuePlayerOpponent.innerText = arrSign[randomSign];
+					answer.append(valuePlayerYour);
+					answer.append(valuePlayerOpponent);
 				}
-				numberOfAttempts.innerText = number;
-					const valuePlayerOne = document.createElement('div');
-					const valuePlayerTwo = document.createElement('div');
-					valuePlayerOne.innerText = 'Вы выбрали: ' + e.target.value;
-					valuePlayerTwo.innerText = 'Противник выбрал: ' + arrSign[randomSign];
-					playerOne.append(valuePlayerOne);
-					playerTwo.append(valuePlayerTwo);
 			if(numberOfAttempts.innerText == 0) {
 				buttonOfSign.disabled=true;
 				check(true);
-				const totalScore = 'Общий счет: ' + playerOneScore + ' : ' + playerTwoScore;
-				if(playerOneScore > playerTwoScore) {
-					answer.innerText = totalScore + ' в вашу пользу';
-				} else if(playerOneScore < playerTwoScore) {
-					answer.innerText = totalScore + ' в пользу противника';
-				} else {
-					 answer.innerText = totalScore + ' Ничья';
+				const totalScore = 'Общий счет: ' + '\n' + playerWinScore + ' : ' + playerLoseScore + '\n';
+				if(playerWinScore > playerLoseScore) {
+					result.innerText = totalScore + 'В вашу пользу';
+				} else if(playerWinScore < playerLoseScore) {
+					result.innerText = totalScore + 'В пользу противника';
 				}
-
 			}
 		}
 		function getRandomInt(min, max) {
@@ -76,4 +94,3 @@
 				buttonOfSign[i].disabled=value;
 			}
 		}
-
